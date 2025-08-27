@@ -1,0 +1,1010 @@
+/* Font Face for Gotham Regular/Book */
+@font-face {
+    font-family: 'Gotham';
+    src: url('path/to/Gotham-Book.woff2') format('woff2'),
+         url('path/to/Gotham-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Font Face for Gotham Bold (your existing code) */
+@font-face {
+    font-family: 'Gotham Bold';
+    src: url('path/to/Gotham-Bold.woff2') format('woff2'),
+         url('path/to/Gotham-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*Millaris*/
+@font-face {
+  font-family: 'Millaris'; /* Choose a name for your font */
+  src: url('path/to/millaris.woff2') format('woff2'),
+       url('path/to/millaris.woff') format('woff'),
+       url('path/to/millaris.ttf') format('truetype');
+  /* Add other font formats if available for broader compatibility */
+  font-weight: normal; /* Or specify if there are different weights */
+  font-style: normal; /* Or specify if there are italic styles */
+}
+
+
+:root {
+    --primary-color: #3fa9f5;     /* Bright light blue */
+    --secondary-color: #60c0ff;   /* Softer/lighter blue */
+    --dark-color: #1f2937;        /* Dark gray (keep for readability) */
+    --light-color: #f5faff;       /* Very light blue-tinted background */
+    --text-color: #374151;        /* Neutral dark gray-blue for body text */
+    --bg-color: #ffffff;          /* White background */
+    --accent-color: #2c82c9;      /* Stronger accent blue */
+    --border-color: #d6ecfc;      /* Pale blue for subtle borders */
+    --hover-color: #1d6fb8;       /* Darker blue for hover states */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Global Aurora Background */
+body {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(
+    270deg,
+    #60c0ff,
+    #a5f3fc,
+    #7dd3fc,
+    #38bdf8,
+    #60c0ff
+  );
+  background-size: 600% 600%;
+  animation: auroraBackground 20s ease infinite;
+}
+
+/* Darker overlay for entire site */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(5,10,20,0.95), transparent 30%),
+    radial-gradient(ellipse at 80% 75%, rgba(2,5,12,0.85), transparent 30%),
+    linear-gradient(135deg, rgba(1,3,10,0.98), rgba(8,16,28,0.95));
+  background-size: 200% 200%;
+  animation: gradientShift 14s ease infinite;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Stars overlay stays subtle */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.95) 0.6px, transparent 0.6px);
+  background-size: 30px 30px;
+  opacity: 0.08;  /* slightly dimmer stars for darker feel */
+  mix-blend-mode: screen;
+  animation: starDrift 120s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+/* Keyframes remain the same */
+@keyframes auroraBackground {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes starDrift {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+
+.project-card,
+.timeline-content,
+.about-content {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Reset all sections to be transparent */
+section,
+.about,
+.experience,
+.skills,
+.contact {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+.experience{
+  background: rgba(10, 25, 47, 0.65); /* dark semi-transparent overlay */
+  border-radius: 16px;
+  padding: 60px 20px;
+  color: var(--light-color);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+
+
+section.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.section-title {
+  position: relative;
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 auto 4.0rem auto;
+  text-align: center;
+
+  /* use the same aurora gradient as hero */
+  background: linear-gradient(
+    270deg,
+    #60c0ff,
+    #a5f3fc,
+    #7dd3fc,
+    #38bdf8,
+    #60c0ff
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: auroraText 8s ease infinite;
+  text-shadow: 0 0 25px rgba(96,192,255,0.35);
+}
+
+@keyframes auroraText {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* Base styles for buttons */
+.btn {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+    font-weight: 500;
+    transition: color 0.4s ease, background-color 0.4s ease;
+}
+
+/* Primary & secondary buttons unified style */
+.btn-primary,
+.btn-secondary {
+    color: white;
+    background-color: var(--primary-color);
+}
+
+/* Hover state with diagonal swipe */
+.btn-primary::before,
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.btn-primary:hover::before,
+.btn-secondary:hover::before {
+    left: 100%;
+}
+
+/* Optional: change color on hover for both */
+.btn-primary:hover,
+.btn-secondary:hover {
+    color: white;
+    background-color: var(--hover-color);
+}
+
+
+
+/* Navigation - Glassy Transparent Navbar */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1); /* transparent glass effect */
+    backdrop-filter: blur(10px);                 /* blur effect for glassiness */
+    -webkit-backdrop-filter: blur(10px);        /* Safari support */
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);    /* subtle shadow for depth */
+    z-index: 1000;
+    padding: 15px 0;
+    transition: var(--transition);
+}
+
+/* Navbar when scrolled */
+#navbar.scrolled {
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.15); /* slightly more opaque on scroll */
+}
+
+/* Navbar container */
+#navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Aurora Hover Effect for Logo */
+.logo {
+  font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white; /* default color */
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.6s ease;
+}
+
+.logo::before {
+  content: attr(data-text); /* duplicate logo text */
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    270deg,
+    #60c0ff,
+    #a5f3fc,
+    #7dd3fc,
+    #38bdf8,
+    #60c0ff
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
+  opacity: 0;
+  transition: opacity 1s ease;
+  animation: auroraLogo 10s ease-in-out infinite;
+  pointer-events: none; /* so it doesn’t interfere with hover */
+}
+
+.logo:hover::before {
+  opacity: 1; /* fade in aurora gradient */
+}
+
+@keyframes auroraLogo {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* Navigation links - white text, same hover underline animation */
+.nav-links {
+    font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+    font-size: 0.85rem;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white; /* changed from dark color */
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Hamburger Menu Bars - white */
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white; /* changed from dark color */
+    transition: var(--transition);
+}
+
+
+:root{
+  --hero-text: #ffffff;
+  --name-highlight: #60c0ff;
+  --gray-color: #e6eefc; /* fallback if other rules reference it */
+}
+
+
+
+/* Hero: dark, readable, layered properly */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  color: var(--hero-text);    /* explicit - won't be accidentally overwritten */
+}
+
+
+/* subtle star texture + slow drift */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.95) 0.6px, transparent 0.6px);
+  background-size: 30px 30px;
+  opacity: 0.10;
+  mix-blend-mode: screen;
+  z-index: -1;
+  animation: starDrift 120s linear infinite;
+  pointer-events: none;
+}
+
+/* keep hero text on top */
+.hero .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* readable heading styles (explicit colors) */
+.hero-content h1,
+.hero-content h2,
+.hero-content p {
+  color: var(--hero-text);
+  text-shadow: 0 8px 24px rgba(2,6,23,0.6);
+}
+.highlight {
+  color: var(--name-highlight);
+  text-shadow: 0 8px 30px rgba(96,192,255,0.15);
+}
+
+/* shooting star style */
+.shooting-star {
+  position: absolute;
+  width: 3px;
+  height: 110px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0));
+  border-radius: 50%;
+  transform: rotate(45deg);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0; /* above aurora but behind hero content */
+  animation: shoot 1s linear forwards;
+}
+
+@keyframes shoot {
+  from { transform: translate(0,0) rotate(45deg); opacity: 1; }
+  to   { transform: translate(-900px, 900px) rotate(45deg); opacity: 0; }
+}
+
+/* keep these from your original CSS (or replace if duplicates exist) */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes starDrift {
+  from { transform: translateY(0) translateX(0); }
+  to   { transform: translateY(-500px) translateX(-500px); }
+}
+
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--light-color);
+}
+
+.hero-content h2 {
+    font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--light-color);
+    margin-bottom: 25px;
+}
+
+.hero-content p {
+    font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--light-color);
+}
+
+.highlight {
+  position: relative;
+  display: inline-block;
+  font-weight: 800;
+  background: linear-gradient(
+    270deg,
+    #60c0ff,
+    #a5f3fc,
+    #7dd3fc,
+    #38bdf8,
+    #60c0ff
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: auroraText 8s ease infinite;
+  text-shadow: 0 0 25px rgba(96,192,255,0.4); /* subtle glow around */
+}
+
+@keyframes auroraText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.cta-buttons {
+    font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* About Section */
+.about {
+    background-color: var(--light-color);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    margin-bottom: 30px;
+}
+
+.info-item h3 {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.info-item ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.info-item li {
+    margin-bottom: 5px;
+}
+
+/* Experience Section */
+.experience {
+    background: rgba(10, 25, 47, 0.65); /* semi-transparent aurora-like overlay */
+    border-radius: 16px;
+    padding: 60px 20px 40px 20px; /* top padding ensures space for title */
+    color: var(--light-color);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+/* Center the section title above timeline */
+.experience > .container > .section-title {
+    text-align: center;
+    margin-bottom: 40px; /* space between title and timeline */
+    z-index: 2;
+    position: relative; /* make it above timeline line */
+}
+
+/* Timeline container */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 20px; /* offset for section title */
+}
+
+/* Vertical line of the timeline */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: var(--border-color);
+    transform: translateX(-50%);
+    z-index: 1; /* behind items */
+}
+
+/* Timeline items */
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.timeline-item:hover {
+    transform: scale(1.02);
+}
+
+.timeline-content {
+    padding: 30px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    width: calc(50% - 30px);
+    left: 50%;
+    position: relative;
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.timeline-item:hover .timeline-content {
+    background: rgba(0,0,0,0.45);
+    box-shadow: 0 12px 32px rgba(63,169,245,0.4);
+}
+
+/* Pulsing markers */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 25px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #60c0ff, #a5f3fc);
+  box-shadow: 0 0 15px rgba(96,192,255,0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* Headings */
+.timeline-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+}
+
+.timeline-content h4 {
+    color: var(--light-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.timeline-date {
+    color: var(--light-color);
+    opacity: 0.8;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+
+.timeline-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+}
+
+.timeline-item:hover .timeline-details {
+  max-height: 500px; /* enough for full list */
+  opacity: 1;
+}
+
+.timeline-details li {
+    margin-bottom: 8px;
+}
+
+/* ==============================
+   PROJECTS
+============================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  cursor: pointer;
+  will-change: transform;
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* smooth in & out */
+}
+
+.project-card:hover {
+  transform: scale(1.05); /* slightly larger */
+  box-shadow: 0 12px 32px rgba(96, 192, 255, 0.4), 
+              0 0 25px rgba(165, 243, 252, 0.3);
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.project-content h3 {
+    color: var(--light-color);
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+}
+
+.project-date {
+    color: var(--light-color);
+    opacity: 0.8;
+    margin-bottom: 15px;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.project-tech span {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.skills {
+    padding: 80px 20px;
+    text-align: center; /* centers section title */
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    justify-items: center; /* centers items horizontally in each column */
+    align-items: start;    /* aligns items to the top */
+    max-width: 1200px;
+    margin: 0 auto;        /* centers the grid itself in the section */
+}
+
+.skills-category {
+    text-align: center;    /* centers category title */
+}
+
+.skills-category h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: var(--light-color);
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centers each skill inside category */
+    gap: 8px;
+    margin-bottom: 8px;
+    color: var(--light-color);
+    font-size: 0.95rem;
+}
+
+
+/* Contact Section */
+.contact {
+    background: rgba(10, 25, 47, 0.65); /* semi-transparent dark overlay to match aurora */
+    border-radius: 16px;
+    padding: 60px 20px;
+    color: var(--light-color); /* all text is now light */
+}
+
+/* Section title */
+.contact > .container > .section-title {
+    color: var(--light-color);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Contact items */
+.contact-item h3,
+.contact-item p,
+.contact-item a {
+    color: var(--light-color);
+}
+
+/* Input fields */
+.contact-form input,
+.contact-form textarea {
+    background-color: rgba(255, 255, 255, 0.15); /* softer, translucent white */
+    color: var(--light-color); /* input text is light */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* lighter placeholder text */
+}
+
+/* Input focus */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(63,169,245,0.2);
+    background-color: rgba(255, 255, 255, 0.25);
+    color: var(--light-color);
+}
+
+/* Submit button */
+.contact-form button {
+    font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+    cursor: pointer;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: var(--light-color);
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(37, 99, 235, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-item h3 {
+    font-size: 1.1rem;
+    font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+    margin-bottom: 5px;
+    color: var(--light-color);
+}
+
+.form-group {
+    font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background-color: var(--hover);
+    transform: translateY(-3px);
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--light-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--light-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Aurora Background */
+.aurora {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* keeps it behind all content */
+  pointer-events: none; /* so it won’t block clicks */
+}
+
+.aurora span {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.6;
+  animation: auroraMove 20s ease-in-out infinite alternate;
+}
+
+.aurora span:nth-child(1) {
+  background: rgba(63, 169, 245, 0.6);
+  top: -100px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.aurora span:nth-child(2) {
+  background: rgba(96, 192, 255, 0.5);
+  top: 200px;
+  right: -150px;
+  animation-delay: 5s;
+}
+
+.aurora span:nth-child(3) {
+  background: rgba(167, 216, 249, 0.4);
+  bottom: -100px;
+  left: 30%;
+  animation-delay: 10s;
+}
+
+@keyframes auroraMove {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(200px, -200px) scale(1.2); }
+}
