@@ -19,18 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach((section) => observer.observe(section));
 });
 
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.nav-links');
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('active');
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open"); // animate bars
+    navLinks.classList.toggle("active"); // show/hide menu
+  });
 });
 
-// Optional: Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('active');
+document.querySelectorAll('.read-more').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const para = btn.previousElementSibling;
+    para.classList.toggle('expanded');
+    btn.textContent = para.classList.contains('expanded') ? 'Show less' : 'Read more';
   });
 });
