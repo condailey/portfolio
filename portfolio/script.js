@@ -36,3 +36,5 @@ document.querySelectorAll('.read-more').forEach(btn => {
     btn.textContent = para.classList.contains('expanded') ? 'Show less' : 'Read more';
   });
 });
+
+

@@ -1,4 +1,3 @@
-/* Font Face for Gotham Regular/Book */
 @font-face {
     font-family: 'Gotham';
     src: url('path/to/Gotham-Book.woff2') format('woff2'),
@@ -8,7 +7,6 @@
     font-display: swap;
 }
 
-/* Font Face for Gotham Bold (your existing code) */
 @font-face {
     font-family: 'Gotham Bold';
     src: url('path/to/Gotham-Bold.woff2') format('woff2'),
@@ -18,32 +16,28 @@
     font-display: swap;
 }
 
-/*Millaris*/
 @font-face {
-  font-family: 'Millaris'; /* Choose a name for your font */
+  font-family: 'Millaris';
   src: url('path/to/millaris.woff2') format('woff2'),
        url('path/to/millaris.woff') format('woff'),
        url('path/to/millaris.ttf') format('truetype');
-  /* Add other font formats if available for broader compatibility */
-  font-weight: normal; /* Or specify if there are different weights */
-  font-style: normal; /* Or specify if there are italic styles */
+  font-weight: normal;
+  font-style: normal;
 }
 
-
 :root {
-    --primary-color: #3fa9f5;     /* Bright light blue */
-    --secondary-color: #60c0ff;   /* Softer/lighter blue */
-    --dark-color: #1f2937;        /* Dark gray (keep for readability) */
-    --light-color: #f5faff;       /* Very light blue-tinted background */
-    --text-color: #374151;        /* Neutral dark gray-blue for body text */
-    --bg-color: #ffffff;          /* White background */
-    --accent-color: #2c82c9;      /* Stronger accent blue */
-    --border-color: #d6ecfc;      /* Pale blue for subtle borders */
-    --hover-color: #1d6fb8;       /* Darker blue for hover states */
+    --primary-color: #3fa9f5;
+    --secondary-color: #60c0ff;
+    --dark-color: #1f2937;
+    --light-color: #f5faff;
+    --text-color: #374151;
+    --bg-color: #ffffff;
+    --accent-color: #2c82c9;
+    --border-color: #d6ecfc;
+    --hover-color: #1d6fb8;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
-
 
 * {
     margin: 0;
@@ -55,10 +49,10 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Global Aurora Background */
 body {
   position: relative;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Gotham Bold', 'Arial Black', sans-serif;
+  font-weight: normal;
   color: white;
   margin: 0;
   min-height: 100vh;
@@ -75,7 +69,6 @@ body {
   animation: auroraBackground 20s ease infinite;
 }
 
-/* Darker overlay for entire site */
 body::before {
   content: "";
   position: fixed;
@@ -90,22 +83,19 @@ body::before {
   pointer-events: none;
 }
 
-/* Stars overlay stays subtle */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   background-image: radial-gradient(circle, rgba(255,255,255,0.95) 0.6px, transparent 0.6px);
   background-size: 30px 30px;
-  opacity: 0.08;  /* slightly dimmer stars for darker feel */
+  opacity: 0.08;
   mix-blend-mode: screen;
   animation: starDrift 120s linear infinite;
   z-index: -1;
   pointer-events: none;
 }
 
-
-/* Keyframes remain the same */
 @keyframes auroraBackground {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
@@ -122,7 +112,6 @@ body::after {
   from { background-position: 0 0; }
   to { background-position: 1000px 1000px; }
 }
-
 
 .project-card,
 .timeline-content,
@@ -175,8 +164,6 @@ section.visible {
   opacity: 1;
 }
 
-
-/* Reset all sections to be transparent */
 section,
 .about,
 .experience,
@@ -188,7 +175,7 @@ section,
 }
 
 .experience{
-  background: rgba(10, 25, 47, 0.65); /* dark semi-transparent overlay */
+  background: rgba(10, 25, 47, 0.65);
   border-radius: 16px;
   padding: 60px 20px;
   color: var(--light-color);
@@ -196,8 +183,6 @@ section,
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0,0,0,0.25);
 }
-
-
 
 section.hidden {
   opacity: 0;
@@ -211,8 +196,6 @@ section.hidden {
   font-weight: 800;
   margin: 0 auto 4.0rem auto;
   text-align: center;
-
-  /* use the same aurora gradient as hero */
   background: linear-gradient(
     270deg,
     #60c0ff,
@@ -224,7 +207,6 @@ section.hidden {
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   animation: auroraText 8s ease infinite;
   text-shadow: 0 0 25px rgba(96,192,255,0.35);
 }
@@ -235,8 +217,6 @@ section.hidden {
   100% { background-position: 0% 50%; }
 }
 
-
-/* Base styles for buttons */
 .btn {
     position: relative;
     overflow: hidden;
@@ -250,14 +230,12 @@ section.hidden {
     transition: color 0.4s ease, background-color 0.4s ease;
 }
 
-/* Primary & secondary buttons unified style */
 .btn-primary,
 .btn-secondary {
     color: white;
     background-color: var(--primary-color);
 }
 
-/* Hover state with diagonal swipe */
 .btn-primary::before,
 .btn-secondary::before {
     content: '';
@@ -277,49 +255,42 @@ section.hidden {
     left: 100%;
 }
 
-/* Optional: change color on hover for both */
 .btn-primary:hover,
 .btn-secondary:hover {
     color: white;
     background-color: var(--hover-color);
 }
 
-
-
-/* Navigation - Glassy Transparent Navbar */
 #navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.1); /* transparent glass effect */
-    backdrop-filter: blur(10px);                 /* blur effect for glassiness */
-    -webkit-backdrop-filter: blur(10px);        /* Safari support */
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);    /* subtle shadow for depth */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     z-index: 1000;
     padding: 15px 0;
     transition: var(--transition);
 }
 
-/* Navbar when scrolled */
 #navbar.scrolled {
     padding: 10px 0;
-    background-color: rgba(255, 255, 255, 0.15); /* slightly more opaque on scroll */
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Navbar container */
 #navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Aurora Hover Effect for Logo */
 .logo {
   font-family: 'Gotham Bold', 'Arial Black', sans-serif;
   font-size: 1.8rem;
   font-weight: bold;
-  color: white; /* default color */
+  color: white;
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -330,7 +301,7 @@ section.hidden {
 }
 
 .logo::before {
-  content: attr(data-text); /* duplicate logo text */
+  content: attr(data-text);
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -346,15 +317,14 @@ section.hidden {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-
   opacity: 0;
   transition: opacity 1s ease;
   animation: auroraLogo 10s ease-in-out infinite;
-  pointer-events: none; /* so it doesn’t interfere with hover */
+  pointer-events: none;
 }
 
 .logo:hover::before {
-  opacity: 1; /* fade in aurora gradient */
+  opacity: 1;
 }
 
 @keyframes auroraLogo {
@@ -363,8 +333,6 @@ section.hidden {
   100% { background-position: 0% 50%; }
 }
 
-
-/* Navigation links - white text, same hover underline animation */
 .nav-links {
     font-family: 'Gotham Bold', 'Arial Black', sans-serif;
     font-size: 0.85rem;
@@ -373,7 +341,7 @@ section.hidden {
 }
 
 .nav-links a {
-    color: white; /* changed from dark color */
+    color: white;
     font-weight: 500;
     position: relative;
 }
@@ -394,26 +362,21 @@ section.hidden {
     width: 100%;
 }
 
-/* Hamburger Menu Bars - white */
 .bar {
     display: block;
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    background-color: white; /* changed from dark color */
+    background-color: white;
     transition: var(--transition);
 }
-
 
 :root{
   --hero-text: #ffffff;
   --name-highlight: #60c0ff;
-  --gray-color: #e6eefc; /* fallback if other rules reference it */
+  --gray-color: #e6eefc;
 }
 
-
-
-/* Hero: dark, readable, layered properly */
 .hero {
   position: relative;
   height: 100vh;
@@ -424,11 +387,9 @@ section.hidden {
   text-align: center;
   overflow: hidden;
   z-index: 1;
-  color: var(--hero-text);    /* explicit - won't be accidentally overwritten */
+  color: var(--hero-text);
 }
 
-
-/* subtle star texture + slow drift */
 .hero::after {
   content: "";
   position: absolute;
@@ -442,7 +403,6 @@ section.hidden {
   pointer-events: none;
 }
 
-/* keep hero text on top */
 .hero .hero-content {
   position: relative;
   z-index: 2;
@@ -450,7 +410,6 @@ section.hidden {
   margin: 0 auto;
 }
 
-/* readable heading styles (explicit colors) */
 .hero-content h1,
 .hero-content h2,
 .hero-content p {
@@ -462,7 +421,6 @@ section.hidden {
   text-shadow: 0 8px 30px rgba(96,192,255,0.15);
 }
 
-/* shooting star style */
 .shooting-star {
   position: absolute;
   width: 3px;
@@ -472,7 +430,7 @@ section.hidden {
   transform: rotate(45deg);
   opacity: 1;
   pointer-events: none;
-  z-index: 0; /* above aurora but behind hero content */
+  z-index: 0;
   animation: shoot 1s linear forwards;
 }
 
@@ -481,7 +439,6 @@ section.hidden {
   to   { transform: translate(-900px, 900px) rotate(45deg); opacity: 0; }
 }
 
-/* keep these from your original CSS (or replace if duplicates exist) */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -491,7 +448,6 @@ section.hidden {
   from { transform: translateY(0) translateX(0); }
   to   { transform: translateY(-500px) translateX(-500px); }
 }
-
 
 .hero-content {
     max-width: 800px;
@@ -537,7 +493,7 @@ section.hidden {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: auroraText 8s ease infinite;
-  text-shadow: 0 0 25px rgba(96,192,255,0.4); /* subtle glow around */
+  text-shadow: 0 0 25px rgba(96,192,255,0.4);
 }
 
 @keyframes auroraText {
@@ -545,7 +501,6 @@ section.hidden {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
 
 .cta-buttons {
     font-family: 'Gotham Bold', 'Arial Black', sans-serif;
@@ -555,14 +510,12 @@ section.hidden {
     margin-top: 30px;
 }
 
-/* About section layout */
 .about-content {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-/* Info items flex layout */
 .info-item {
   display: flex;
   align-items: center;
@@ -576,18 +529,17 @@ section.hidden {
 }
 
 .about-info .info-item:nth-child(2) {
-    margin-top: 20px; /* adjust as needed */
+    margin-top: 20px;
 }
 
 .about-info .info-item:nth-child(3) {
-    margin-top: 20px; /* adjust as needed */
+    margin-top: 20px;
 }
 
 .info-item:hover {
   transform: translateY(-3px);
 }
 
-/* Aurora glow icon style */
 .info-icon {
   font-size: 2rem;
   width: 50px;
@@ -602,7 +554,6 @@ section.hidden {
   animation: auroraGlow 4s ease-in-out infinite alternate;
 }
 
-/* Glow animation */
 @keyframes auroraGlow {
   0% {
     text-shadow: 0 0 8px rgba(96,192,255,0.4),
@@ -621,7 +572,6 @@ section.hidden {
   }
 }
 
-/* Text next to icon */
 .info-text h3 {
   font-size: 1.2rem;
   margin-bottom: 4px;
@@ -634,7 +584,6 @@ section.hidden {
   margin-bottom: 2px;
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
   .info-item {
     flex-direction: row;
@@ -643,36 +592,30 @@ section.hidden {
   }
 }
 
-
-
-/* Experience Section */
 .experience {
-    background: rgba(10, 25, 47, 0.65); /* semi-transparent aurora-like overlay */
+    background: rgba(10, 25, 47, 0.65);
     border-radius: 16px;
-    padding: 60px 20px 40px 20px; /* top padding ensures space for title */
+    padding: 60px 20px 40px 20px;
     color: var(--light-color);
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0,0,0,0.25);
 }
 
-/* Center the section title above timeline */
 .experience > .container > .section-title {
     text-align: center;
-    margin-bottom: 40px; /* space between title and timeline */
+    margin-bottom: 40px;
     z-index: 2;
-    position: relative; /* make it above timeline line */
+    position: relative;
 }
 
-/* Timeline container */
 .timeline {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-    padding-top: 20px; /* offset for section title */
+    padding-top: 20px;
 }
 
-/* Vertical line of the timeline */
 .timeline::before {
     content: '';
     position: absolute;
@@ -682,10 +625,9 @@ section.hidden {
     width: 2px;
     background-color: var(--border-color);
     transform: translateX(-50%);
-    z-index: 1; /* behind items */
+    z-index: 1;
 }
 
-/* Timeline items */
 .timeline-item {
     position: relative;
     margin-bottom: 40px;
@@ -713,7 +655,6 @@ section.hidden {
     box-shadow: 0 12px 32px rgba(63,169,245,0.4);
 }
 
-/* Pulsing markers */
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -732,7 +673,6 @@ section.hidden {
   50% { transform: scale(1.3); opacity: 1; }
 }
 
-/* Headings */
 .timeline-content h3 {
     color: var(--primary-color);
     margin-bottom: 5px;
@@ -752,7 +692,6 @@ section.hidden {
     font-style: italic;
 }
 
-
 .timeline-details {
   max-height: 0;
   overflow: hidden;
@@ -761,7 +700,7 @@ section.hidden {
 }
 
 .timeline-item:hover .timeline-details {
-  max-height: 500px; /* enough for full list */
+  max-height: 500px;
   opacity: 1;
 }
 
@@ -769,9 +708,6 @@ section.hidden {
     margin-bottom: 8px;
 }
 
-/* ==============================
-   PROJECTS
-============================== */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -786,12 +722,12 @@ section.hidden {
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   cursor: pointer;
   will-change: transform;
-  transition: transform 0.4s ease, box-shadow 0.4s ease; /* smooth in & out */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card:hover {
-  transform: scale(1.05); /* slightly larger */
-  box-shadow: 0 12px 32px rgba(96, 192, 255, 0.4), 
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(96, 192, 255, 0.4),
               0 0 25px rgba(165, 243, 252, 0.3);
 }
 
@@ -830,36 +766,33 @@ section.hidden {
 
 .skills {
     padding: 80px 20px;
-    text-align: center; /* centers section title */
+    text-align: center;
 }
 
 .skills-row {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; /* allows wrapping on smaller screens */
+    flex-wrap: wrap;
 }
 
 .skills-category {
-    flex: 1 1 22%; /* roughly 4 columns with space between */
+    flex: 1 1 22%;
     background: rgba(10, 25, 47, 0.8);
     padding: 20px;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    position: relative;  /* so children can layer above */
+    position: relative;
     z-index: 1;
-    overflow: visible; 
+    overflow: visible;
 }
 
-/* Skill category title aurora glow */
 .skills-category h3 {
     position: relative;
     font-size: 1.3rem;
-    color: #ffffff;  /* base text color */
+    color: #ffffff;
     margin-bottom: 15px;
     cursor: pointer;
-
-    /* Aurora gradient effect */
     background: linear-gradient(
         270deg,
         #60c0ff,
@@ -873,19 +806,16 @@ section.hidden {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
-
     text-shadow: 0 0 12px rgba(96,192,255,0.7),
                  0 0 25px rgba(165,243,252,0.5);
     animation: auroraGlowText 6s ease-in-out infinite;
 }
 
-/* Subtle pulse animation for aurora effect */
 @keyframes auroraGlowText {
     0%   { background-position: 0% 50%; text-shadow: 0 0 8px rgba(96,192,255,0.5), 0 0 16px rgba(165,243,252,0.3); }
     50%  { background-position: 100% 50%; text-shadow: 0 0 14px rgba(96,192,255,0.8), 0 0 28px rgba(165,243,252,0.6); }
     100% { background-position: 0% 50%; text-shadow: 0 0 8px rgba(96,192,255,0.5), 0 0 16px rgba(165,243,252,0.3); }
 }
-
 
 .skills-grid {
     display: flex;
@@ -893,11 +823,10 @@ section.hidden {
     justify-content: center;
     gap: 10px;
     position: relative;
-    z-index: 2;          /* above category */
+    z-index: 2;
     overflow: visible;
 }
 
-/* Skill hover pop & glow */
 .skill-item {
     position: relative;
     display: flex;
@@ -925,7 +854,6 @@ section.hidden {
                  0 0 30px rgba(255,255,255,0.3);
 }
 
-/* Tooltip description */
 .skill-item .tooltip {
     position: absolute;
     bottom: -30px;
@@ -939,7 +867,7 @@ section.hidden {
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(5px);
     white-space: nowrap;
-    z-index: 10;   
+    z-index: 10;
 }
 
 .skill-item:hover .tooltip {
@@ -947,7 +875,6 @@ section.hidden {
     transform: translateY(0);
 }
 
-/* Category accordion toggle */
 .skills-category {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -958,9 +885,8 @@ section.hidden {
     box-shadow: 0 0 20px rgba(63,169,245,0.5);
 }
 
-/* Collapsible skills inside category */
 .skills-grid {
-    max-height: 1000px; /* expanded by default */
+    max-height: 1000px;
     overflow: hidden;
     transition: max-height 0.5s ease;
 }
@@ -969,51 +895,45 @@ section.hidden {
     max-height: 0;
 }
 
-
-
-/* Responsive: stack on smaller screens */
 @media (max-width: 1024px) {
     .skills-category {
-        flex: 1 1 45%; /* two columns */
+        flex: 1 1 45%;
     }
 }
 
 @media (max-width: 738px) {
     .skills-category {
-        flex: 1 1 100%; /* stack vertically */
+        flex: 1 1 100%;
     }
 }
 
-
-
-
-/* Contact Section */
 .contact {
-    background: rgba(10, 25, 47, 0.65); /* semi-transparent dark overlay to match aurora */
+    background: rgba(10, 25, 47, 0.65);
     border-radius: 16px;
     padding: 60px 20px;
-    color: var(--light-color); /* all text is now light */
+    color: var(--light-color);
 }
 
-/* Section title */
 .contact > .container > .section-title {
     color: var(--light-color);
     text-align: center;
     margin-bottom: 40px;
 }
 
-/* Contact items */
+.social-links {
+    padding-bottom: 30px;
+}
+
 .contact-item h3,
 .contact-item p,
 .contact-item a {
     color: var(--light-color);
 }
 
-/* Input fields */
 .contact-form input,
 .contact-form textarea {
-    background-color: rgba(255, 255, 255, 0.15); /* softer, translucent white */
-    color: var(--light-color); /* input text is light */
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--light-color);
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 12px 15px;
     border-radius: 8px;
@@ -1024,10 +944,9 @@ section.hidden {
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.6); /* lighter placeholder text */
+    color: rgba(255, 255, 255, 0.6);
 }
 
-/* Input focus */
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
@@ -1037,7 +956,6 @@ section.hidden {
     color: var(--light-color);
 }
 
-/* Submit button */
 .contact-form button {
     font-family: 'Gotham Bold', 'Arial Black', sans-serif;
     cursor: pointer;
@@ -1053,8 +971,6 @@ section.hidden {
     background-color: var(--hover-color);
     transform: translateY(-2px);
 }
-
-
 
 .contact-item {
     display: flex;
@@ -1110,7 +1026,6 @@ section.hidden {
     transform: translateY(-3px);
 }
 
-
 .form-group {
     margin-bottom: 20px;
 }
@@ -1140,7 +1055,6 @@ section.hidden {
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
-/* Aurora Background */
 .aurora {
   position: fixed;
   top: 0;
@@ -1148,8 +1062,8 @@ section.hidden {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: -1; /* keeps it behind all content */
-  pointer-events: none; /* so it won’t block clicks */
+  z-index: -1;
+  pointer-events: none;
 }
 
 .aurora span {
@@ -1188,24 +1102,18 @@ section.hidden {
   100% { transform: translate(200px, -200px) scale(1.2); }
 }
 
-/* ============================= */
-/* HAMBURGER BASE STYLES         */
-/* ============================= */
-
-/* Hide hamburger by default (desktop) */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  z-index: 1100;             /* stays above nav */
-  position: relative;        /* anchor glowDot */
-  width: 32px;               /* fixed area for bars/dot */
+  z-index: 1100;
+  position: relative;
+  width: 32px;
   height: 24px;
 }
 
-/* Bars */
 .hamburger .bar {
   display: block;
   width: 100%;
@@ -1216,13 +1124,11 @@ section.hidden {
   transition: all 0.3s ease;
 }
 
-/* Morph hamburger into a glowing circle */
 .hamburger.open .bar {
   transform: scale(0);
   opacity: 0;
 }
 
-/* Glow dot appears right in place of the bars */
 .hamburger.open::after {
   content: "";
   position: absolute;
@@ -1238,12 +1144,10 @@ section.hidden {
               0 0 24px rgba(255, 255, 255, 0.4);
 }
 
-/* Remove dot when closed */
 .hamburger:not(.open)::after {
   display: none;
 }
 
-/* Glow pop animation */
 @keyframes glowDot {
   0% {
     transform: translate(-50%, -50%) scale(0);
@@ -1261,14 +1165,12 @@ section.hidden {
     top: 70px;
     right: 0;
     flex-direction: column;
-    background: rgba(10, 25, 47, 0.9); /* glassy mobile menu */
+    background: rgba(10, 25, 47, 0.9);
     backdrop-filter: blur(12px);
     width: 220px;
     padding: 20px;
     gap: 20px;
     border-radius: 12px 0 0 12px;
-
-    /* Smooth fade/slide */
     opacity: 0;
     transform: translateX(100%);
     pointer-events: none;
@@ -1282,11 +1184,90 @@ section.hidden {
   }
 
   .hamburger {
-    display: flex; /* show only on mobile */
+    display: flex;
   }
 
   .timeline-details {
         display: none;
     }
 
+  .timeline-content {
+    width: 100%;
+    left: 0;
+    margin-bottom: 20px;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item::before {
+    left: -28px;
+  }
+
+}
+
+/* --- Font fallback and boldness for mobile --- */
+body, h1, h2, h3, h4, h5, h6, .logo, .section-title {
+  font-family: 'Gotham Bold', 'Gotham', system-ui, Arial, sans-serif !important;
+  font-weight: bold !important;
+}
+
+/* Force bold on mobile for headings and logo */
+@media (max-width: 768px) {
+  h1, h2, h3, h4, h5, h6, .logo, .section-title {
+    font-weight: bold !important;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* --- Timeline/Work Experience Card Mobile Fixes --- */
+@media (max-width: 768px) {
+  .timeline {
+    padding-top: 0;
+  }
+  .timeline-item {
+    margin-bottom: 30px;
+    width: 100%;
+    left: 0;
+    min-width: 0;
+  }
+  .timeline-content {
+    width: 100% !important;
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 20px 12px !important;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.45);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(63,169,245,0.15);
+  }
+  .timeline-content h3,
+  .timeline-content h4,
+  .timeline-date {
+    text-align: left;
+    word-break: break-word;
+  }
+  .timeline-content h4 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: bold;
+  }
+  .timeline-date {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+  .timeline::before {
+    display: none;
+  }
+  .timeline-item::before {
+    display: none;
+  }
+}
+
+/* --- Ensure .timeline-content stays visually grouped --- */
+.timeline-content {
+  min-width: 0;
+  word-break: break-word;
 }

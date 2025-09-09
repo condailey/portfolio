@@ -42,7 +42,6 @@
             <div class="hero-content">
                 <h1>Hello, I'm <span class="highlight">Connor Dailey</span></h1>
                 <h2 class="typing-text">Computer Science Graduate & DevOps Engineer</h2>
-                <p>Transforming ideas into functional solutions through code.</p>
                 <div class="cta-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#contact" class="btn btn-secondary">Contact Me</a>
@@ -92,7 +91,7 @@
           </div>
           <div class="info-text">
             <h3>Personal Interests</h3>
-            <p>I am interested in synthesizing my academic passions, Computer Science and Religious Studies, into real-world applications. Primarily, I seek to employ real-world software solutions to effect societal and humane change. A tangible societal impetus for my work is what drives my interest in the aforementioned academic disciplines.</p>
+            <p>I am interested in synthesizing my academic passions, Computer Science and Religious Studies, into real-world applications. Primarily, I employ real-world software solutions to effect societal and humane change. A tangible societal impetus for my work is what drives my interest in my academic disciplines.</p>
           </div>
         </div>
         
@@ -112,14 +111,12 @@
                         <h3>DevOps Engineer</h3>
                         <h4>Ryan-Miranda Partners</h4>
                         <p class="timeline-date">Summer 2025 - Current</p>
-    
-                        <!-- Add a wrapper for the list -->
+
                         <ul class="timeline-details collapsed">
                             <li>Documented system interactions and dependencies within an AI platform environment to improve integration reliability</li>
-                            <li>Tested interface functionality between platform components to validate data exchange capabilities</li>
+                            <li>Tested interface functionality between platform components</li>
                             <li>Collaborated with cross-functional teams to identify and resolve integration challenges</li>
-                            <li>Created technical documentation for system interfaces and API connections</li>
-                            <li>Communicated project updates to stakeholders in clear, accessible language</li>
+                            <li>Communicated bugs and updates to the development team in clear, accessible language</li>
                         </ul>
                     </div>
 
@@ -174,7 +171,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" onclick="window.open('https://github.com/condailey/Projects/tree/main/Automations', '_blank')">
                     <div class="project-content">
                         <h3>Python Automation Tools</h3>
                         <p class="project-date">Summer 2024</p>
@@ -186,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" onclick="window.open('https://github.com/afahey03/Grade-Predictor', '_blank')">
                     <div class="project-content">
                         <h3>Academic Success Prediction Model</h3>
                         <p class="project-date">Fall 2023</p>
@@ -197,6 +194,21 @@
                             <span>Sklearn</span>
                             <span>Numpy</span>
                             <span>Pandas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" onclick="window.open('https://github.com/afahey03/Snowman', '_blank')">
+                    <div class="project-content">
+                        <h3>Snowman</h3>
+                        <p class="project-date">Spring 2025</p>
+                        <p>Snowman is a simple hangman clone in which the user has to guess the letters of a word.
+                        When the user guesses an incorrect letter, part of the snowman is built and shows up on the screen.
+                        Picks a word at random using a dictionary of about 47,000 words, including apostrophes.
+                        The game ends when the snowman is fully built.</p>
+                        <div class="project-tech">
+                            <span>SwiftUI</span>
+                            <span>Swift</span>
+                            <span>Randomization</span>
                         </div>
                     </div>
                 </div>
@@ -267,8 +279,6 @@
         </div>
     </div>
 </section>
-
-
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -302,7 +312,7 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formspree.io/f/mqadljen" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
